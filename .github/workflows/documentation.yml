@@ -31,14 +31,14 @@ jobs:
 
       - name: Build docs
         run: |
-          cd docs
+          cd /
           export PATH=$(python3 -c "import cmake; print(cmake.CMAKE_BIN_DIR)"):$PATH
           python3 -m sphinx_multiversion . _build/html/
 
       - name: Update docs
         run: |
           mkdir /tmp/triton-docs
-          mv docs/_build/html/* /tmp/triton-docs/
+          mv /_build/html/* /tmp/triton-docs/
           git checkout gh-pages
           cp -r CNAME /tmp/triton-docs/
           cp -r index.html /tmp/triton-docs/
